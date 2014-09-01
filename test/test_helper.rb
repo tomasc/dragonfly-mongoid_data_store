@@ -6,6 +6,11 @@ require 'dragonfly/mongoid_data_store'
 require 'rubygems'
 require 'database_cleaner'
 
+if ENV["CI"]
+  require "coveralls"
+  Coveralls.wear!
+end
+
 ENV["MONGOID_TEST_HOST"] ||= "localhost"
 ENV["MONGOID_TEST_PORT"] ||= "27017"
 
