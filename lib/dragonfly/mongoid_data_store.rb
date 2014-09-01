@@ -18,7 +18,7 @@ module Dragonfly
     OBJECT_ID = BSON::ObjectId
     INVALID_OBJECT_ID = Moped::Errors::InvalidObjectId
 
-    # ---------------------------------------------------------------------
+    # =====================================================================
 
     def write temp_object, opts={}
       content_type = opts[:content_type] || opts[:mime_type] || 'application/octet-stream'
@@ -49,10 +49,7 @@ module Dragonfly
     # ---------------------------------------------------------------------
 
     def destroy uid
-      Mongoid::GridFs.delete uid
-
-    rescue Mongoid::Errors::DocumentNotFound, INVALID_OBJECT_ID => e
-      raise DataNotFound, "#{e} - #{uid}"
+      Mongoid::GridFs.delete(uid)
     end
 
     # ---------------------------------------------------------------------

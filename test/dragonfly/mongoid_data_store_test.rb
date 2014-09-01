@@ -11,6 +11,7 @@ describe Dragonfly::MongoidDataStore do
   let(:app) { Dragonfly.app }
   let(:content) { Dragonfly::Content.new(app, "Foo Bar!") }
   let(:data_store) { Dragonfly::MongoidDataStore.new }
+  let(:meta) { { my_meta: 'my meta' } }
 
   # ---------------------------------------------------------------------
 
@@ -34,17 +35,15 @@ describe Dragonfly::MongoidDataStore do
     end
 
     it 'stores additional meta data' do
-      uid = data_store.write(content, meta: { my_meta: 'something' })
+      uid = data_store.write(content, meta: meta)
       response = Mongoid::GridFS.get(uid)
-      marshal_b64_decode(response.meta)[:my_meta].must_equal 'something'
+      marshal_b64_decode(response.meta)[:my_meta].must_equal meta[:my_meta]
     end
   end
 
   # ---------------------------------------------------------------------
 
   describe '#read' do
-    let(:meta) { { my_meta: 'my meta' } }
-
     before do
       stored_content = Mongoid::GridFS.put(content.file, content_type: 'text/plain', meta: marshal_b64_encode(meta))
       @result = data_store.read(stored_content.id)
@@ -65,15 +64,17 @@ describe Dragonfly::MongoidDataStore do
 
   # ---------------------------------------------------------------------
 
-  # describe '#destroy' do
+  describe '#destroy' do
+    before do
+      @stored_content = Mongoid::GridFS.put(content.file)
+    end
 
-  #   it "should destroy the file in the database" do
-  #     uid = data_store.write(content)
-  #     data_store.destroy(uid)
-  #     data_store.should_not_contain uid
-  #   end
-
-  # end
+    it 'destroys data in the database' do
+      res = data_store.destroy(@stored_content.id)
+      res.must_equal true
+      Mongoid::GridFS.find(_id: @stored_content.id).must_be_nil
+    end
+  end
 
   # ---------------------------------------------------------------------
 
