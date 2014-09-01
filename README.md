@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/tomasc/dragonfly-mongoid_data_store.svg)](https://travis-ci.org/tomasc/dragonfly-mongoid_data_store) [![Gem Version](https://badge.fury.io/rb/dragonfly-mongoid_data_store.svg)](http://badge.fury.io/rb/dragonfly-mongoid_data_store) [![Coverage Status](https://img.shields.io/coveralls/tomasc/dragonfly-mongoid_data_store.svg)](https://coveralls.io/r/tomasc/dragonfly-mongoid_data_store)
 
-TODO: Write a gem description
+Data store for storing content handled with the Dragonfly gem in a mongo database using mongoid.
 
 ## Installation
 
