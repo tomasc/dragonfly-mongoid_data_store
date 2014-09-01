@@ -4,6 +4,8 @@
 
 [Dragonfly](https://github.com/markevans/dragonfly) data store that uses [Mongoid::GridFs](https://github.com/ahoward/mongoid-grid_fs).
 
+Replaces [dragonfly-mongo_data_store](https://github.com/markevans/dragonfly-mongo_data_store) and works with [Dragonfly](https://github.com/markevans/dragonfly) > 1.0.7 and [Mongoid](https://github.com/mongoid/mongoid) > 4.0.0.
+
 ## Installation
 
 Add this line to your application's Gemfile:
