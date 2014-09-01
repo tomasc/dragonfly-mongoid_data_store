@@ -13,7 +13,7 @@ HOST = ENV["MONGOID_TEST_HOST"]
 PORT = ENV["MONGOID_TEST_PORT"].to_i
 
 def database_id
-  "mongoid_traffic_test"
+  "dragonfly-mongoid_data_store_test"
 end
 
 CONFIG = {
