@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.version       = Dragonfly::MongoidDataStore::VERSION
   spec.authors       = ["Tomas Celizna"]
   spec.email         = ["tomas.celizna@gmail.com"]
-  spec.summary       = %q{Mongoid data store for Dragonfly}
-  spec.description   = %q{Data store for storing content handled with the Dragonfly gem in a mongo database using mongoid.}
+  spec.summary       = %q{Dragonfly data store that uses Mongoid::GridFs.}
+  spec.description   = %q{Dragonfly data store that uses Mongoid::GridFs.}
   spec.homepage      = "https://github.com/tomasc/dragonfly-mongoid_data_store"
   spec.license       = "MIT"
 
