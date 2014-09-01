@@ -20,7 +20,23 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+You can configure Dragonfly to use the mongoid datastore in the dragonfly initializer like so:
+
+```ruby
+# config/initializers/dragonfly.rb
+
+require 'dragonfly/mongoid_data_store'
+
+Dragonfly.app.configure do
+  # ...
+
+  datastore :mongoid
+
+  # ...
+end
+```
+
+Remember the require!
 
 ## Contributing
 
