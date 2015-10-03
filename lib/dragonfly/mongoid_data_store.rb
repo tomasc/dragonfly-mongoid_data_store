@@ -16,7 +16,6 @@ module Dragonfly
     # ---------------------------------------------------------------------
 
     OBJECT_ID = BSON::ObjectId
-    INVALID_OBJECT_ID = Moped::Errors::InvalidObjectId
 
     # =====================================================================
 
@@ -42,7 +41,7 @@ module Dragonfly
 
       [ grid_file.data, meta ]
 
-    rescue Mongoid::Errors::DocumentNotFound, INVALID_OBJECT_ID => e
+    rescue Mongoid::Errors::DocumentNotFound => e
       raise DataNotFound, "#{e} - #{uid}"
     end
 
