@@ -26,7 +26,7 @@ module Dragonfly
 
       temp_object.file do |f|
         grid_file = Mongoid::GridFS.put(f, content_type: content_type, meta: marshal_b64_encode(meta))
-        grid_file.id
+        grid_file.id.to_s
       end
     end
 
