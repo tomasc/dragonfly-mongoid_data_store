@@ -22,3 +22,6 @@ class MiniTest::Spec
   before(:each) { DatabaseCleaner.start }
   after(:each) { DatabaseCleaner.clean }
 end
+
+Mongoid.logger.level = Logger::INFO
+Mongo::Logger.logger.level = Logger::INFO
