@@ -19,7 +19,7 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
 
   spec.add_dependency "dragonfly", "~> 1.0"
-  spec.add_dependency "mongoid", ">= 5", "<= 6"
+  spec.add_dependency "mongoid"
   spec.add_dependency "mongoid-grid_fs"
 
   spec.add_development_dependency "bundler", "~> 1.6"
