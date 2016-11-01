@@ -8,8 +8,6 @@ module Dragonfly
   class MongoidDataStore
     class DataNotFound < StandardError; end
 
-    include Serializer
-
     OBJECT_ID = BSON::ObjectId
 
     def write temp_object, opts={}
@@ -44,6 +42,10 @@ module Dragonfly
 
     def marshal_b64_encode object
       Dragonfly::Serializer.b64_encode(Marshal.dump(object))
+    end
+
+    def marshal_b64_decode object
+      Dragonfly::Serializer.marshal_b64_decode(object)
     end
   end
 end
