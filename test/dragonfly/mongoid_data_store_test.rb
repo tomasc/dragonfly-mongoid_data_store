@@ -3,17 +3,12 @@ require 'dragonfly/mongoid_data_store'
 require 'dragonfly/serializer'
 
 describe Dragonfly::MongoidDataStore do
-
   include Dragonfly::Serializer
-
-  # ---------------------------------------------------------------------
 
   let(:app) { Dragonfly.app }
   let(:content) { Dragonfly::Content.new(app, "Foo Bar!") }
   let(:data_store) { Dragonfly::MongoidDataStore.new }
   let(:meta) { { my_meta: 'my meta' } }
-
-  # ---------------------------------------------------------------------
 
   describe '#write' do
     it "stores the data in the database" do
@@ -41,11 +36,9 @@ describe Dragonfly::MongoidDataStore do
     end
   end
 
-  # ---------------------------------------------------------------------
-
   describe '#read' do
     before do
-      stored_content = Mongoid::GridFS.put(content.file, content_type: 'text/plain', meta: marshal_b64_encode(meta))
+      stored_content = Mongoid::GridFS.put(content.file, content_type: 'text/plain', meta: b64_encode(Marshal.dump(meta)))
       @result = data_store.read(stored_content.id)
     end
 
@@ -62,8 +55,6 @@ describe Dragonfly::MongoidDataStore do
     end
   end
 
-  # ---------------------------------------------------------------------
-
   describe '#destroy' do
     before do
       @stored_content = Mongoid::GridFS.put(content.file)
@@ -75,7 +66,4 @@ describe Dragonfly::MongoidDataStore do
       Mongoid::GridFS.find(_id: @stored_content.id).must_be_nil
     end
   end
-
-  # ---------------------------------------------------------------------
-
 end
