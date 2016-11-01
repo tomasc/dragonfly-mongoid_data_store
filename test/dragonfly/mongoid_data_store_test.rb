@@ -3,8 +3,6 @@ require 'dragonfly/mongoid_data_store'
 require 'dragonfly/serializer'
 
 describe Dragonfly::MongoidDataStore do
-  include Dragonfly::Serializer
-
   let(:app) { Dragonfly.app }
   let(:content) { Dragonfly::Content.new(app, "Foo Bar!") }
   let(:data_store) { Dragonfly::MongoidDataStore.new }
@@ -32,13 +30,13 @@ describe Dragonfly::MongoidDataStore do
     it 'stores additional meta data' do
       uid = data_store.write(content, meta: meta)
       response = Mongoid::GridFS.get(uid)
-      marshal_b64_decode(response.meta)[:my_meta].must_equal meta[:my_meta]
+      Dragonfly::Serializer.marshal_b64_decode(response.meta)[:my_meta].must_equal meta[:my_meta]
     end
   end
 
   describe '#read' do
     before do
-      stored_content = Mongoid::GridFS.put(content.file, content_type: 'text/plain', meta: b64_encode(Marshal.dump(meta)))
+      stored_content = Mongoid::GridFS.put(content.file, content_type: 'text/plain', meta: Dragonfly::Serializer.b64_encode(Marshal.dump(meta)))
       @result = data_store.read(stored_content.id)
     end
 
