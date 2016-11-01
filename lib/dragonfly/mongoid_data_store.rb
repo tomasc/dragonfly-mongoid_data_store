@@ -6,18 +6,11 @@ Dragonfly::App.register_datastore(:mongoid){ Dragonfly::MongoidDataStore }
 
 module Dragonfly
   class MongoidDataStore
-
     class DataNotFound < StandardError; end
-
-    # ---------------------------------------------------------------------
 
     include Serializer
 
-    # ---------------------------------------------------------------------
-
     OBJECT_ID = BSON::ObjectId
-
-    # =====================================================================
 
     def write temp_object, opts={}
       content_type = opts[:content_type] || opts[:mime_type] || 'application/octet-stream'
@@ -29,8 +22,6 @@ module Dragonfly
         grid_file.id.to_s
       end
     end
-
-    # ---------------------------------------------------------------------
 
     def read uid
       grid_file = Mongoid::GridFS.get(uid)
@@ -45,13 +36,14 @@ module Dragonfly
       raise DataNotFound, "#{e} - #{uid}"
     end
 
-    # ---------------------------------------------------------------------
-
     def destroy uid
       Mongoid::GridFs.delete(uid)
     end
 
-    # ---------------------------------------------------------------------
+    private # =============================================================
 
+    def marshal_b64_encode object
+      Dragonfly::Serializer.b64_encode(Marshal.dump(object))
+    end
   end
 end
