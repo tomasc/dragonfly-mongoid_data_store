@@ -6,12 +6,12 @@ describe Dragonfly::MongoidDataStore do
   include Dragonfly::Serializer
 
   let(:app) { Dragonfly.app }
-  let(:content) { Dragonfly::Content.new(app, "Foo Bar!") }
+  let(:content) { Dragonfly::Content.new(app, 'Foo Bar!') }
   let(:data_store) { Dragonfly::MongoidDataStore.new }
   let(:meta) { { my_meta: 'my meta' } }
 
   describe '#write' do
-    it "stores the data in the database" do
+    it 'stores the data in the database' do
       uid = data_store.write(content)
       response = Mongoid::GridFS.get(uid)
       response.data.must_equal content.data

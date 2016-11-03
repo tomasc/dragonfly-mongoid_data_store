@@ -6,7 +6,7 @@ require 'dragonfly/mongoid_data_store/version'
 Gem::Specification.new do |spec|
   spec.name          = 'dragonfly-mongoid_data_store'
   spec.version       = Dragonfly::MongoidDataStore::VERSION
-  spec.authors       = ["Tomas Celizna"]
+  spec.authors       = ['Tomas Celizna']
   spec.email         = ['tomas.celizna@gmail.com']
   spec.summary       = 'Dragonfly data store that uses Mongoid::GridFs.'
   spec.description   = 'Dragonfly data store that uses Mongoid::GridFs.'

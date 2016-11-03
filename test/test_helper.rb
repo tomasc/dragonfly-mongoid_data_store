@@ -6,8 +6,8 @@ require 'dragonfly/mongoid_data_store'
 require 'rubygems'
 require 'database_cleaner'
 
-if ENV["CI"]
-  require "coveralls"
+if ENV['CI']
+  require 'coveralls'
   Coveralls.wear!
 end
 
