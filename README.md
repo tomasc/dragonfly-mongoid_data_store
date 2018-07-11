@@ -6,6 +6,10 @@
 
 Data store similar to [dragonfly-mongo_data_store](https://github.com/markevans/dragonfly-mongo_data_store) which works with [Dragonfly](https://github.com/markevans/dragonfly) > 1 and [Mongoid](https://github.com/mongoid/mongoid) > 4.
 
+## Requirements
+
+* mongoid 5, 6 or 7
+
 ## Installation
 
 Add this line to your application's Gemfile:
