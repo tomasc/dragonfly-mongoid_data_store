@@ -20,7 +20,7 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency 'dragonfly', '~> 1.0'
   spec.add_dependency 'mongoid', '>= 5', '< 8'
-  spec.add_dependency 'mongoid-grid_fs'
+  spec.add_dependency 'mongoid-grid_fs', '~> 2.4', '>= 2.4.0'
 
   spec.add_development_dependency 'bundler'
   spec.add_development_dependency 'coveralls'
