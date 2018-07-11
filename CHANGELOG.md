@@ -1,5 +1,5 @@
 # CHANGELOG
 
-## 0.1.5 (unreleased)
+## 0.2.0
 
 * Mongoid 7 compatibility
