@@ -8,7 +8,7 @@ Data store similar to [dragonfly-mongo_data_store](https://github.com/markevans/
 
 ## Requirements
 
-* mongoid 5, 6 or 7
+* mongoid 5, 6, 7, and 8
 
 ## Installation
 
