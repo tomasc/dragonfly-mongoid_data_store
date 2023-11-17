@@ -1,6 +1,6 @@
 # Dragonfly::MongoidDataStore
 
-[![Tests](https://github.com/tomasc/dragonfly-mongoid_data_store/actions/workflows/test.yml/badge.svg)](https://github.com/tomasc/dragonfly-mongoid_data_store/actions/workflows/test.yml)
+[![Tests](https://github.com/tomasc/dragonfly-mongoid_data_store/actions/workflows/test.yml/badge.svg)](https://github.com/tomasc/dragonfly-mongoid_data_store/actions/workflows/test.yml) [![Gem Version](https://badge.fury.io/rb/dragonfly-mongoid_data_store.svg)](http://badge.fury.io/rb/dragonfly-mongoid_data_store) [![Coverage Status](https://img.shields.io/coveralls/tomasc/dragonfly-mongoid_data_store.svg)](https://coveralls.io/r/tomasc/dragonfly-mongoid_data_store)
 
 [Dragonfly](https://github.com/markevans/dragonfly) data store that uses [Mongoid::GridFs](https://github.com/ahoward/mongoid-grid_fs).
 
