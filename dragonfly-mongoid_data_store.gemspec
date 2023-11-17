@@ -19,12 +19,13 @@ Gem::Specification.new do |spec|
   spec.require_paths = ['lib']
 
   spec.add_dependency 'dragonfly', '~> 1.0'
-  spec.add_dependency 'mongoid', '>= 5', '< 8'
-  spec.add_dependency 'mongoid-grid_fs', '~> 2.4', '>= 2.4.0'
+  spec.add_dependency 'mongoid'
+  spec.add_dependency 'mongoid-grid_fs', '>= 2.4.0'
 
+  spec.add_development_dependency 'appraisal'
   spec.add_development_dependency 'bundler'
   spec.add_development_dependency 'coveralls'
-  spec.add_development_dependency 'database_cleaner', '>= 1.5.1'
+  spec.add_development_dependency 'database_cleaner-mongoid'
   spec.add_development_dependency 'guard'
   spec.add_development_dependency 'guard-minitest'
   spec.add_development_dependency 'minitest'

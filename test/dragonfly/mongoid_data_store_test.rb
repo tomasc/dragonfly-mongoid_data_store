@@ -14,25 +14,25 @@ describe Dragonfly::MongoidDataStore do
     it 'stores the data in the database' do
       uid = data_store.write(content)
       response = Mongoid::GridFS.get(uid)
-      response.data.must_equal content.data
+      _(response.data).must_equal content.data
     end
 
     it 'stores default mime type' do
       uid = data_store.write(content)
       response = Mongoid::GridFS.get(uid)
-      response.content_type.must_equal 'application/octet-stream'
+      _(response.content_type).must_equal 'application/octet-stream'
     end
 
     it 'stores supplied mime type' do
       uid = data_store.write(content, content_type: 'text/plain')
       response = Mongoid::GridFS.get(uid)
-      response.content_type.must_equal 'text/plain'
+      _(response.content_type).must_equal 'text/plain'
     end
 
     it 'stores additional meta data' do
       uid = data_store.write(content, meta: meta)
       response = Mongoid::GridFS.get(uid)
-      marshal_b64_decode(response.meta)[:my_meta].must_equal meta[:my_meta]
+      _(marshal_b64_decode(response.meta)[:my_meta]).must_equal meta[:my_meta]
     end
   end
 
@@ -43,15 +43,15 @@ describe Dragonfly::MongoidDataStore do
     end
 
     it 'retrieves the file' do
-      @result.first.must_equal content.data
+      _(@result.first).must_equal content.data
     end
 
     it 'retrieves meta data' do
-      @result.last.must_equal meta
+      _(@result.last).must_equal meta
     end
 
     it 'raises DataNotFound when file does not exist' do
-      proc { data_store.read(BSON::ObjectId.new) }.must_raise Dragonfly::MongoidDataStore::DataNotFound
+      _(proc { data_store.read(BSON::ObjectId.new) }).must_raise Dragonfly::MongoidDataStore::DataNotFound
     end
   end
 
@@ -62,8 +62,8 @@ describe Dragonfly::MongoidDataStore do
 
     it 'destroys data in the database' do
       res = data_store.destroy(@stored_content.id)
-      res.must_equal true
-      Mongoid::GridFS.find(_id: @stored_content.id).must_be_nil
+      _(res).must_equal true
+      _(Mongoid::GridFS.find(_id: @stored_content.id)).must_be_nil
     end
   end
 end
