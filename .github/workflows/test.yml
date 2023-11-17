@@ -8,8 +8,11 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        gemfile: ["5", "6", "7", "8"]
+        gemfile: ["7", "8"]
         ruby: ["2.7", "3.0", "3.1"]
+        include:
+          - gemfile: "6"
+            ruby: "2.7"
     runs-on: ubuntu-latest
     services:
       mongodb:

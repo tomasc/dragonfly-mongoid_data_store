@@ -1,7 +1,3 @@
-appraise "5" do
-  gem "mongoid", "~> 5.0"
-end
-
 appraise "6" do
   gem "mongoid", "~> 6.0"
 end
